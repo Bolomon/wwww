@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Auth;
 use App\User;
+use App\Favorit;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,6 +27,6 @@ class HomeController extends Controller
     {
         // var_dump(Auth::id());
         // die();
-        return view('home');
+        return view('home',['favorit'=>Favorit::where('user_id',Auth::id())->get()]);
     }
 }

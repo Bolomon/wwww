@@ -1,13 +1,6 @@
 <template>
     <div class="form-wether">
 
-        <input type="text" v-model="cityName" class="control-form w-100">
-
-        <h1 class="text-center">{{this.cityName}}</h1>
-
-        <div class="btn btn-primary" v-on:click="getWeather">ПОГОДА</div>
-
-
         <div v-for="item in main_list"  class="wether-block">
             <div class="wether-block-info">
               <div class="wether-block-text">
@@ -20,11 +13,7 @@
                 <p v-on:click="add_favorit(item.name)">Добавить в избранное</p>
             </div>
         </div>
-        <p></p>
-
-
-
-
+        <p v-on:click='get_favorit'>кнопка</p>
 
     </div>
 </template>
@@ -62,11 +51,15 @@ export default {
             axios.post('/api/add_favorit', {city:name}).catch((error)=>this.error_chek=error);
             console.log(this.$userId);
         },
+        get_favorit(){
+          axios.get('/api/get_favorit').then((main_list)=>this.cityName = main_list.city)
+        },
 
     },
 
     async mounted(){
        this.getWeather();
+       this.get_favorit();
 
   },
 

@@ -13,16 +13,17 @@ class FavoritController extends Controller
     public function create(Request $request){
       $validator = validator($request->all(),
       [
-          'user_id' => 'required',
           'city' => 'required',
+
       ]
       );
       if(!$validator->fails())
       {
 
       $model = Favorit::create([
-        'user_id' => $request->id,
         'city' =>$request->city,
+        'user_id' => 1,
+
       ]);
       if($model){
           return response()->json($model)
@@ -36,6 +37,13 @@ class FavoritController extends Controller
 
 
     }
+
+
+    public function get_favorit(){
+      return response()->json(Favorit::get())
+          ->setStatusCode('200');
+    }
+
 
     public function user_auth(){
 

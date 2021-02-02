@@ -15,7 +15,7 @@ use App\Http\Controllers\FavoritController;
 |
 */
 Route::post('add_favorit', 'FavoritController@create');
-Route::get('user_auth', 'FavoritController@user_auth');
+Route::get('get_favorit', 'FavoritController@get_favorit');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

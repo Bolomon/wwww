@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('wether-component', require('./components/WetherComponent.vue').default);
+Vue.component('favorit-wether-component', require('./components/FavoritWetherComponent.vue').default);
 Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
 
 /**
